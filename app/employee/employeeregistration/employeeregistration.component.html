@@ -1,0 +1,91 @@
+
+	<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 style="color:whitesmoke"> Registration</h1>
+	               		<hr />
+	               	</div>
+	            </div> 
+				<div class="main-login main-center">
+					<form class="form-horizontal animate" method="post" [formGroup]="employeeRegistrationForm">
+						
+						<div class="form-group">
+							<label for="empId" class="cols-sm-2 control-label">Employee Id</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="empId" id="empId"  placeholder="Enter your Employee Id"  [(ngModel)]="newEmployee.empId" formControlName="empId"/>
+									<span id="empIdError" class="text-danger" *ngIf="employeeRegistrationForm.controls.empId.invalid && employeeRegistrationForm.controls.empId.dirty">Enter Valid Employee Id</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Name</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"  [(ngModel)]="newEmployee.name" formControlName="name"/>
+									<span id="nameError" class="text-danger" *ngIf="employeeRegistrationForm.controls.name.invalid && employeeRegistrationForm.controls.name.dirty">Enter Valid name</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email"  [(ngModel)]="newEmployee.emailId" formControlName="email"/>
+									<span id="emailError" class="text-danger" *ngIf="employeeRegistrationForm.controls.email.invalid && employeeRegistrationForm.controls.email.dirty">Enter Valid email Id</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="phone" class="cols-sm-2 control-label">Phone No</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="phone" id="phone"  placeholder="Enter your phone No"  [(ngModel)]="newEmployee.phone" formControlName="phone"/>
+									<span id="phoneError" class="text-danger" *ngIf="employeeRegistrationForm.controls.phone.invalid && employeeRegistrationForm.controls.phone.dirty">Enter Valid Phone Number</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" [(ngModel)]="newEmployee.password" formControlName="password"/>
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" formControlName="confirm"/>
+								</div>
+							</div>
+						</div> -->
+						<div class="form-group ">
+							<button type="button" class="btn btn-primary btn-lg btn-block login-button"  (click)="registerEmployee(newEmployee)">Register</button>
+							
+						</div>
+						<div class="login-register">
+				            <a routerLink="/employeelogin" routerLinkActive="active">Login</a>
+						 </div>
+						 <div *ngIf="employee.message!=null" >
+							 <span class="text-success"><b>Successfully Registered,Login to Continue</b></span>
+						 </div>
+					</form>
+				</div>
+			</div>
+	</div>
+	
+     <router-outlet></router-outlet>

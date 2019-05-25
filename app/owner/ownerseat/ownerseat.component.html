@@ -1,0 +1,145 @@
+
+<!-- 
+
+<br>
+<br>
+<br>
+<br>
+
+<div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <span class="s">
+<input type="checkbox" id=1 value=1 [checked]="i1=='true'" (change)="modify(1)">
+<input type="checkbox" id=2 value=2 [checked]="i2=='true'" (change)="modify(2)">
+<input type="checkbox" id=3 value=3 [checked]="i3=='true'" (change)="modify(3)">
+
+<button (click)="show()">dfsdfsdf</button>
+</span>
+
+</div> -->
+<div style="top:10px;left:10px">
+  <h1 style="font-size: 30px;padding-bottom: 0">Movie:{{movie[0].movie}}</h1>
+  <h1 style="font-size: 10px">Price:{{movie[0].ticketCost}}</h1>
+</div>
+
+<div class="container ">
+  
+  <h1>Movie Seat Blocking</h1>
+ <div class="container ">
+
+     
+         
+       <ul class="seat_w3ls">
+             <li class="smallBox greenBox">Selected Seat</li>
+
+             <li class="smallBox redBox">Reserved Seat</li>
+
+             <li class="smallBox emptyBox">Empty Seat</li>
+         </ul>
+         
+         
+         
+         <div class="seatStructure txt-center animate"   style="overflow-x:auto;">
+             
+                <span *ngFor="let l of obj let i=index">
+                    <span *ngIf="i%10==0">
+                        <br><br>
+                    </span>
+                    <span *ngIf="i%5==0">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                    
+                     <input type="checkbox" id={{l.seatId}} value={{l.seatId}} (change)="modify(l.seatId)" [disabled]="l.status=='true'">
+                 
+                 
+
+             </span>
+             
+
+             <div class="screen">
+                 <h2 class="wthree">Screen this way</h2>
+             </div>
+             <button type ="button"  data-toggle="modal" data-target="#edit" class="btn btn-success"style="margin-left:%" (click)="pay()">Block Tickets</button>
+             <button type ="button"  data-toggle="modal" data-target="#edit1" class="btn btn-success"style="margin-left:%" >Reset Bookings</button>
+            <br><br> <button type ="button"  data-toggle="modal" data-target="#edit2" class="btn btn-success"style="margin-left:%" >Edit movie</button>
+</div>
+</div>
+</div>
+
+<div id="edit" class="modal fade" role="dialog" style="align-content: center">
+ <div class="modal-dialog"  style="align-content: center">
+
+   <!-- Modal content-->
+   <div class="modal-content">
+   
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     
+     </div>
+     <div class="modal-body">
+      <h1 style="color:black; font-size:20px">Tickets successfully Blocked.</h1>
+   </div>
+   
+ 
+</div>
+ </div>
+</div>
+<div id="edit1" class="modal fade" role="dialog" style="align-content: center">
+  <div class="modal-dialog"  style="align-content: center">
+ 
+    <!-- Modal content-->
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      
+      </div>
+      <div class="modal-body">
+       <h1 style="color:black;font-size: 20px">Are you sure you want to reset the bookings?</h1>
+       <br>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="reset()" data-dismiss="modal">Yes</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+    
+  
+ </div>
+  </div>
+ </div>
+
+
+
+ <div id="edit2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form [formGroup]="editForm" (ngSubmit)="hello()">
+        <div class="modal-header">
+          <button type="button" class="close"  data-dismiss="modal">&times;</button>
+          <h2 style="color:black;font-size:50px" class="modal-title">EDIT MOVIE</h2>
+        </div>
+        <div class="modal-body">
+          
+           
+            <div class="form-group">
+							<label for="item" class="cols-sm-2 control-label"><p style="color:black">Movie Name:</p></label>
+							<input type="text" class="form-control"  formControlName="movie"  />
+            </div>
+            <br>
+            <div class="form-group">
+							<label for="price" class="cols-sm-2 control-label"><p style="color:black">Price:</p></label>
+							<input type="number" class="form-control" name="price" formControlName="ticketCost" id="price"  />
+            </div>
+            
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-success" data-dismiss="modal"[disabled]="editForm.invalid" (click)="hello()" >Save</button>
+        </div>
+    </form>
+  </div>
+    </div>
+  </div>
+  

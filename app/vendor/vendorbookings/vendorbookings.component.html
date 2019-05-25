@@ -1,0 +1,23 @@
+
+<h1 class="text-center" align="center" style="color:whitesmoke"> Food Bookings</h1>
+<table class="table animate " align="center" style="color:whitesmoke">
+<thead>
+  <tr>
+    <th class="text-center" style="padding:15px">Employee ID</th>
+    <th class="text-center">Price</th>
+    <th class="text-center">Quantity</th>
+    <th class="text-center">OTP</th>
+
+
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let fi of pay">
+    
+    <td class="text-center" style="padding:15px">{{ fi.employeeId }}</td>
+    <td class="text-center">{{ fi.price }}</td>
+    <td class="text-center">{{ fi.quantity }}</td>
+    <td class="text-center">{{ fi.otp }}</td>
+  </tr> 
+</tbody>
+</table>

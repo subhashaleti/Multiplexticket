@@ -1,0 +1,158 @@
+
+  <div class="container animate">
+  <div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+  <h2 class="text-uppercase" style="color:whitesmoke" >Welcome {{vendor.vendorName}}</h2>
+  <font size="4">
+<table align="center" class="t2" style="color:whitesmoke">
+  <tr>
+  <td align="left" class="t1">User Id:</td>
+  <td align="left" class="t1"> {{vendor.fid}}</td>
+</tr>
+<tr>
+    <td align="left" class="t1">Email Id:</td>
+    <td align="left" class="t1"> {{vendor.emailId}}</td>
+  </tr>
+  <tr>
+      <td align="left" class="t1">Phone:</td>
+      <td align="left" class="t1"> {{vendor.phone}}</td>
+    </tr>
+  
+ </table>
+ <br>
+ <br>
+
+</font>
+  
+  </div>
+  <div style="position: relative;
+  top: 10px;
+  right: 5px;">
+  <a class="icons" [routerLink]="['/']"><span class="glyphicon glyphicon-log-out"></span><b>LogOut</b> </a>
+  </div>
+ 
+  <!-- <div class="col-md-6 ">
+  <div class="pv-30 ph-20 service-block bordered shadow text-center object-non-visible animated object-visible fadeInDownSmall" data-animation-effect="fadeInDownSmall" data-effect-delay="150">
+  <span class="icon bg-df circle"><i class="fa fa-film"></i></span>
+  <h3 style="color:whitesmoke">View Menu</h3>
+  
+  <a routerLink="" routerLinkActive="active">Book Tickets<i class="pl-5 fa fa-angle-double-right"></i></a>
+  </div>
+  </div>
+  <div class="col-md-6 ">
+  <div class="pv-30 ph-20 service-block bordered shadow text-center object-non-visible animated object-visible fadeInDownSmall" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
+  <span class="icon bg-df circle"><i class="fa fa-cutlery"></i></span>
+  <h3 style="color:whitesmoke">Edit Menu</h3>
+  
+  <a routerLink="" routerLinkActive="active">Order Food<i class="pl-5 fa fa-angle-double-right"></i></a>
+  </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center" align="center" style="color:whitesmoke">Food Menu</h1>
+      
+      <button data-toggle="modal" data-target="#edit1" class="btn btn-info " ><span class="glyphicon glyphicon-cutlery"></span> +</button>
+       <button  class="btn btn-info" routerLink="/vendorbookings" >View orders</button>
+
+      <form>
+        <table class="table" align="center" style="color:whitesmoke">
+      <thead>
+        <tr>
+          <th class="text-center">ITEM</th>
+          <th class="text-center">PRICE</th>
+          <th class="text-center">SERVINGS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fi of menuitems">
+          <td class="text-center">{{ fi.item }}</td>
+          <td class="text-center">{{ fi.price }}</td>
+          <td class="text-center">{{ fi.servings }}</td>
+          <td>
+            <button data-toggle="modal" data-target="#edit" class="btn btn-info" (click)="editForm(fi)"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button data-toggle="modal" data-target="#delete" class="btn btn-danger" (click)="delete(fi.mid)"><i class="glyphicon glyphicon-trash"></i></button>
+          </td>
+        </tr> 
+        </tbody>
+           
+      
+     
+    </table>
+  </form> 
+    </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div id="edit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form [formGroup]="eForm" (ngSubmit)="update()">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Item</h4>
+        </div>
+        <div class="modal-body">
+          
+            <input type="hidden" class="form-control" name="itemId" formControlName="mid" id="itemId" [value]="fi.mid"/>
+            <input type="hidden" class="form-control" name="vendorId" formControlName="id" id="vendorId" [value]="fi.id"/>
+            <div class="form-group">
+							<label for="item" class="cols-sm-2 control-label">Item</label>
+							<input type="text" class="form-control" name="item" formControlName="item" id="item"  [value]="fi.item"/>
+						</div>
+            <div class="form-group">
+							<label for="price" class="cols-sm-2 control-label">Price</label>
+							<input type="text" class="form-control" name="price" formControlName="price" id="price"  [value]="fi.price"/>
+            </div>
+            <div class="form-group">
+							<label for="servings" class="cols-sm-2 control-label">Servings</label>
+							<input type="text" class="form-control" name="servings" formControlName="servings" id="servings"  [value]="fi.servings"/>
+						</div> 
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-success" data-dismiss="modal"  (click)="update()" >Save</button>
+        </div>
+    </form>
+  </div>
+    </div>
+  </div>
+  
+  <div id="edit1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+      <form [formGroup]="eForm" (ngSubmit)="addItem()">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Item</h4>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" class="form-control" name="itemId" formControlName="mid" id="itemId" [value]="fi.mid"/>
+            <input type="hidden" class="form-control" name="vendorId" formControlName="id" id="vendorId" [value]="fi.id"/>
+            
+            <div class="form-group">
+							<label for="item" class="cols-sm-2 control-label">Item</label>
+							<input type="text" class="form-control" name="item" formControlName="item" id="item"  />
+						</div>
+            <div class="form-group">
+							<label for="price" class="cols-sm-2 control-label">Price</label>
+							<input type="text" class="form-control" name="price" formControlName="price" id="price"/>
+            </div>
+            <div class="form-group">
+							<label for="servings" class="cols-sm-2 control-label">Servings</label>
+							<input type="text" class="form-control" name="servings" formControlName="servings" id="servings" />
+						</div> 
+      </div>
+      <div class="modal-footer">
+          <button type="submit" class="btn btn-success" data-dismiss="modal"  (click)="addItem()" >Add</button>
+        </div>
+    </form>
+  </div>
+    </div>
+  </div>
+  

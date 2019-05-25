@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-12" style="color:whitesmoke">
+    <h1 class="text-center">Movies for the weekend!</h1>
+    <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center">Movie Name</th>
+        <th class="text-center">No of seats</th>
+        <th class="text-center">Price</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let movie of movies">
+      <tr >
+        <td class="text-center">{{ movie.movie}}</td>
+        <td class="text-center">{{ movie.noOfSeats }}</td>
+        <td class="text-center">{{ movie.ticketCost}}</td>
+      
+      </tr>
+    </tbody>
+  </table>
+</div> 
+  </div>
+</div>

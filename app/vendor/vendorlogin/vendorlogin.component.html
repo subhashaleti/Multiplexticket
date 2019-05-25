@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="row main">
+		<div class="panel-heading">
+		   <div class="panel-title text-center">
+				   <h1 style="color:whitesmoke">Food Court Vendor Login</h1>
+				   <hr />
+			   </div>
+		</div> 
+		<div class="main-login main-center">
+			<form class="form-horizontal animate" method="post" [formGroup]="loginForm" (ngSubmit)="login()">
+				
+				<div class="form-group">
+					<label for="empId" class="cols-sm-2 control-label">User Id</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" name="fid" formControlName="fid" fid="fid"  placeholder="Enter your user fid"/>
+						</div>
+					</div>
+				</div>
+
+			<div class="form-group">
+					<label for="password" class="cols-sm-2 control-label">Password</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+							<input type="password" class="form-control" name="password" formControlName="password" fid="password"  placeholder="Enter your Password"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group ">
+					  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+				</div>
+				<div *ngIf="vendor.message==null">
+					<span class="text-danger">Please Enter Valid Login Details</span>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	
+</div>
+
+ <router-outlet></router-outlet>

@@ -1,0 +1,98 @@
+
+  <div class="container animate">
+  <div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+  <h2 class="text-uppercase" style="color:whitesmoke;" >Welcome {{employee.name}}</h2>
+  <font size="4">
+<table align="center" style="color:whitesmoke">
+  <tr>
+  <td align="left">Emp Id:</td>
+  <td align="left"> {{employee.empId}}</td>
+</tr>
+<tr>
+    <td align="left">Email Id:</td>
+    <td align="left"> {{employee.emailId}}</td>
+  </tr>
+  <tr>
+      <td align="left">Phone:</td>
+      <td align="left"> {{employee.phone}}</td>
+    </tr>
+    <tr>
+        <td align="left">Balance:</td>
+        <td align="left"> {{employee.balance}} 
+        </td>
+      </tr>
+      
+        
+       
+    </table>
+    <br>
+    <br>
+    <button type ="button" data-toggle="modal" data-target="#edit" class="btn btn-info" >Add Balance</button>
+
+ 
+ <br>
+      <br>
+      <br>
+      
+      
+</font>
+ 
+  </div>
+  <div style="position: relative;
+  top: 10px;
+  right: 5px;">
+  <a class="icons" [routerLink]="['/']"><span class="glyphicon glyphicon-log-out"></span><b>LogOut</b> </a>
+  </div>
+  <div class="col-md-6 ">
+      
+      
+  <div  (click)="movies()" class="pv-30 ph-20 service-block bordered shadow text-center object-non-visible animated object-visible fadeInDownSmall" data-animation-effect="fadeInDownSmall" data-effect-delay="150">
+  <span class="icon bg-df circle"><i class="fa fa-film"></i></span>
+  <h3 style="color:whitesmoke">Multiplex Ticket Booking</h3>
+  
+  <!-- <a routerLink="" routerLinkActive="active">Book Tickets<i class="pl-5 fa fa-angle-double-right"></i></a> -->
+  </div>
+  </div>
+  <div class="col-md-6 ">
+      
+  <div (click)="food()" class="pv-30 ph-20 service-block bordered shadow text-center object-non-visible animated object-visible fadeInDownSmall" data-animation-effect="fadeInDownSmall" data-effect-delay="200">
+  <span class="icon bg-df circle"><i class="fa fa-cutlery"></i></span>
+  <h3 style="color:whitesmoke">Food Courts Coupons</h3>
+  
+  <!-- <a routerLink="" routerLinkActive="active">Order Food<i class="pl-5 fa fa-angle-double-right"></i></a> -->
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  
+<div id="edit" class="modal fade" role="dialog" style="align-content: center">
+  <div class="modal-dialog"  style="align-content: center">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      
+      </div>
+      <div class="modal-body">
+          <form class="form-horizontal" method="post" [formGroup]="balanceForm">
+            <div align="center">
+       <h4>Enter amount: <input type="number" class="" formControlName="balance"/>
+       </h4>
+      </div>
+       
+       <span id="balanceError" class="text-danger" *ngIf="balanceForm.controls.balance.invalid && balanceForm.controls.balance.dirty">Enter amount between 100 and 1000</span>
+       <br>
+       <div align="center">
+       <button type ="button"  data-toggle="modal" data-target="#edit" class="btn btn-success"style="margin-left:%" [disabled]="balanceForm.controls.balance.invalid" (click)="addBalance()">Submit Booking!</button>
+      </div>    
+      </form>
+      </div>
+    
+  
+</div>
+  </div>
+</div>

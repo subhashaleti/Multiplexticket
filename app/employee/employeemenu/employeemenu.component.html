@@ -1,0 +1,28 @@
+<div class="container animate">
+  <div class="row">
+  <div class="col-md-6" style="color:whitesmoke">
+    <h1 class="text-center">Vendors</h1>
+    <table class="table">
+    <thead>
+      <tr>
+        <th class="text-center">Vendor</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Phone</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let vendor of vendors">
+      <tr >
+        <td class="text-center">{{ vendor.vendorName }}</td>
+        <td class="text-center">{{ vendor.emailId }}</td>
+        <td class="text-center">{{ vendor.phone }}</td>
+        <td class="text-center"><button class="btn-primary" (click)="showmenu(vendor)">Show Menu</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="col-md-6">
+      <app-foodmenu *ngIf="chosenVendor" [empId]= "empId" [menu]="menu" [chosenVendor]="chosenVendor"></app-foodmenu>
+  </div>
+  </div>
+</div>
